@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ummah’s Kitchen – Premium Idiyappam & Veg Stew</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background-color: #0f0f0f;
+        color: #f2f2f2;
+    }
+
+    /* HERO */
+    .hero {
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                    url('hero.jpg') center/cover no-repeat;
+        height: 480px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .hero h1 {
+        font-size: 54px;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: 2px;
+        text-shadow: 0 4px 12px rgba(0,0,0,0.7);
+    }
+
+    .hero p {
+        font-size: 22px;
+        margin-top: 12px;
+        color: #e6e6e6;
+        text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+    }
+
+    /* MENU */
+    .menu-section {
+        padding: 60px 20px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .menu-title {
+        text-align: center;
+        font-size: 40px;
+        font-weight: 700;
+        margin-bottom: 40px;
+        color: #ffb36b;
+    }
+
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 35px;
+    }
+
+    .menu-card {
+        background: #1a1a1a;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        transition: 0.3s;
+    }
+
+    .menu-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 28px rgba(0,0,0,0.6);
+    }
+
+    .menu-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 14px;
+        margin-bottom: 15px;
+    }
+
+    .menu-card h3 {
+        font-size: 24px;
+        margin-bottom: 8px;
+        color: #ffb36b;
+    }
+
+    .menu-card p {
+        font-size: 16px;
+        color: #cccccc;
+    }
+
+    .price {
+        font-size: 22px;
+        font-weight: 700;
+        margin-top: 10px;
+        color: #ff7f2a;
+    }
+
+    /* ORDER FORM */
+    .order-section {
+        background: #141414;
+        padding: 60px 20px;
+        margin-top: 40px;
+        border-top: 4px solid #ff7f2a;
+    }
+
+    .order-title {
+        text-align: center;
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 25px;
+        color: #ffb36b;
+    }
+
+    form {
+        max-width: 600px;
+        margin: auto;
+        background: #1a1a1a;
+        padding: 35px;
+        border-radius: 16px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+
+    label {
+        font-weight: 600;
+        margin-top: 15px;
+        display: block;
+        color: #e6e6e6;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 14px;
+        margin-top: 6px;
+        border-radius: 10px;
+        border: 1px solid #333;
+        background: #0f0f0f;
+        color: #fff;
+        font-size: 16px;
+    }
+
+    button {
+        width: 100%;
+        padding: 16px;
+        margin-top: 25px;
+        background: #ff7f2a;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #e66d1f;
+    }
+
+    /* FOOTER */
+    footer {
+        text-align: center;
+        padding: 30px;
+        background: #0a0a0a;
+        color: #999;
+        margin-top: 40px;
+        font-size: 15px;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <div>
+        <h1>Premium Idiyappam & Veg Stew</h1>
+        <p>Authentic South Indian flavors crafted fresh every day</p>
+    </div>
+</div>
+
+<!-- MENU -->
+<section class="menu-section">
+    <h2 class="menu-title">Our Signature Dishes</h2>
+
+    <div class="menu-grid">
+        <div class="menu-card">
+            <img src="idiyappam.jpg" alt="Idiyappam">
+            <h3>Fresh Soft Idiyappam</h3>
+            <p>Traditional string hoppers made fresh with love</p>
+            <div class="price">$25 (Half Tray)</div>
+        </div>
+
+        <div class="menu-card">
+            <img src="vegstew.jpg" alt="Veg Stew">
+            <h3>Creamy Veg Stew</h3>
+            <p>Rich coconut‑based stew with fresh vegetables</p>
+            <div class="price">$40 (Half Tray)</div>
+        </div>
+
+        <div class="menu-card">
+            <img src="fulltray.jpg" alt="Full Tray Idiyappam">
+            <h3>Full Tray Idiyappam</h3>
+            <p>Perfect for gatherings and celebrations</p>
+            <div class="price">$80 (Full Tray)</div>
+        </div>
+    </div>
+</section>
+
+<!-- ORDER FORM -->
+<section class="order-section">
+    <h2 class="order-title">Place Your Order</h2>
+
+    <form id="orderForm">
+        <label>Name</label>
+        <input type="text" id="name" required>
+
+        <label>Phone Number</label>
+        <input type="text" id="phone" required>
+
+        <label>Food Item</label>
+        <select id="food">
+            <option value="Idiyappam">Idiyappam</option>
+            <option value="Veg Stew">Veg Stew</option>
+        </select>
+
+        <label>Tray Size</label>
+        <select id="tray">
+            <option value="Half Tray">Half Tray</option>
+            <option value="Full Tray">Full Tray</option>
+        </select>
+
+        <label>Quantity</label>
+        <input type="number" id="qty" min="1" value="1">
+
+        <label>Total Amount</label>
+        <input type="text" id="total" readonly>
+
+        <button type="submit">Submit Order</button>
+    </form>
+</section>
+
+<footer>
+    © Ummah’s Kitchen — Call/Text: 469‑596‑2180 — Closed Sundays
+</footer>
+
+<script>
+    const prices = {
+        "Idiyappam-Half Tray": 25,
+        "Idiyappam-Full Tray": 80,
+        "Veg Stew-Half Tray": 40
+    };
+
+    function calculateTotal() {
+        const food = document.getElementById("food").value;
+        const tray = document.getElementById("tray").value;
+        const qty = parseInt(document.getElementById("qty").value) || 1;
+        const key = `${food}-${tray}`;
+        const price = prices[key] || 0;
+        document.getElementById("total").value = "$" + (price * qty);
+    }
+
+    document.getElementById("food").onchange = calculateTotal;
+    document.getElementById("tray").onchange = calculateTotal;
+    document.getElementById("qty").oninput = calculateTotal;
+
+    document.getElementById("orderForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        calculateTotal();
+
+        const name = document.getElementById("name").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const food = document.getElementById("food").value;
+        const tray = document.getElementById("tray").value;
+        const qty = parseInt(document.getElementById("qty").value) || 1;
+        const totalRaw = document.getElementById("total").value.replace(/[^0-9.\-]+/g, "");
+        const total = parseFloat(totalRaw) || 0;
+
+        const payload = {
+            name,
+            phone,
+            food,
+            tray,
+            qty,
+            total,
+            date: new Date().toISOString()
+        };
+
+        try {
+            const res = await fetch("/.netlify/functions/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+            const text = await res.text();
+            alert("Order submitted: " + text);
+            document.getElementById("orderForm").reset();
+            calculateTotal();
+        } catch (err) {
+            console.error(err);
+            alert("Submission failed: " + (err.message || err));
+        }
+    });
+</script>
+
+</body>
+</html>
