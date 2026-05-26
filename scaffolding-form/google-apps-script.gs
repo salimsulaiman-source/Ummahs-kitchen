@@ -9,6 +9,10 @@ function doPost(e) {
     const ss = SpreadsheetApp.openById(spreadsheetId);
     const sheet = ss.getSheetByName(sheetName) || ss.getSheets()[0];
 
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(['Timestamp', 'Name', 'Phone', 'Food', 'Tray', 'Quantity', 'Total', 'Pickup Date', 'Pickup Time']);
+    }
+
     if (data.action === 'summary') {
       return ContentService
         .createTextOutput(JSON.stringify({ summary: getSummaryForDate(sheet, data.date) }))
@@ -29,7 +33,7 @@ function doPost(e) {
     ]);
 
     return ContentService
-      .createTextOutput(JSON.stringify({ status: 'ok' }))
+      .createTextOutput(JSON.stringify({ status: 'ok', message: 'Order saved successfully.' }))
       .setMimeType(ContentService.MimeType.JSON);
   } catch (err) {
     return ContentService
