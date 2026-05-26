@@ -1,3 +1,5 @@
+export const schedule = "0 20 * * *";
+
 function getTwilioConfig() {
   return {
     accountSid: process.env.TWILIO_ACCOUNT_SID,
@@ -10,7 +12,7 @@ function getTwilioConfig() {
 async function sendWhatsAppMessage(message) {
   const { accountSid, authToken, from, to } = getTwilioConfig();
   if (!accountSid || !authToken || !from || !to) {
-    console.warn('Twilio WhatsApp not configured, skipping message send.');
+    console.warn('Twilio WhatsApp not configured, skipping summary send.');
     return;
   }
 
@@ -39,35 +41,30 @@ async function sendWhatsAppMessage(message) {
 
 export async function handler(event, context) {
   try {
-    const payload = JSON.parse(event.body);
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const yyyy = tomorrow.getFullYear();
+    const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+    const dd = String(tomorrow.getDate()).padStart(2, '0');
+    const targetDate = `${yyyy}-${mm}-${dd}`;
 
-    const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbzUJSXrPciqcIKzMoFya2C6JxygM-XK88JoJnuBE0I4QP0ZoeFzqHmDELl44lK8tCzEZg/exec",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      }
-    );
+    const response = await fetch('https://script.google.com/macros/s/AKfycbzUJSXrPciqcIKzMoFya2C6JxygM-XK88JoJnuBE0I4QP0ZoeFzqHmDELl44lK8tCzEZg/exec', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'summary', date: targetDate })
+    });
 
-    const text = await response.text();
+    const summaryText = await response.text();
+    const message = summaryText && summaryText.trim().length > 0
+      ? `Order summary for ${targetDate}:\n${summaryText}`
+      : `No orders were received for ${targetDate}.`;
 
-    const whatsappMessage = `New order received:\nName: ${payload.name}\nPhone: ${payload.phone}\nItem: ${payload.food}\nTray: ${payload.tray}\nQuantity: ${payload.qty}\nTotal: $${payload.total}\nPickup: ${payload.pickupDate} ${payload.pickupTime}`;
-
-    try {
-      await sendWhatsAppMessage(whatsappMessage);
-    } catch (whatsappError) {
-      console.warn('WhatsApp send failed:', whatsappError.message);
-    }
+    await sendWhatsAppMessage(message);
 
     return {
       statusCode: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "*"
-      },
-      body: text
+      body: `Summary sent for ${targetDate}`
     };
-
   } catch (err) {
     return {
       statusCode: 500,

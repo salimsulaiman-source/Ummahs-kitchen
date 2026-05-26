@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#1a1a2e" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link rel="manifest" href="/manifest.json" />
 <title>Ummah’s Kitchen – Premium Idiyappam & Veg Stew</title>
 
 <style>
@@ -405,7 +409,7 @@
         <input type="date" id="pickupDate" required>
 
         <label>Pickup Time</label>
-        <input type="time" id="pickupTime" required>
+        <input type="time" id="pickupTime" required step="900">
 
         <button type="submit">Submit Order</button>
     </form>
@@ -488,6 +492,14 @@
             alert("Submission failed: " + (err.message || err));
         }
     });
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js').catch(function(err) {
+                console.warn('Service worker registration failed:', err);
+            });
+        });
+    }
 </script>
 
 </body>

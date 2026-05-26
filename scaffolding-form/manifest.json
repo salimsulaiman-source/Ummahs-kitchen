@@ -1,0 +1,8 @@
+{
+  "name": "Ummah's Kitchen",
+  "short_name": "Ummah's",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#1a1a2e",
+}
