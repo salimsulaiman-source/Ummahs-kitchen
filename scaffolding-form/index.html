@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ummah’s Kitchen – Premium Idiyappam & Veg Stew</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Poppins", sans-serif;
+        background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+        color: #f2f2f2;
+        line-height: 1.6;
+    }
+
+    /* HERO */
+    .hero {
+        background: linear-gradient(135deg, rgba(255,127,42,0.1) 0%, rgba(0,0,0,0.5) 100%),
+                    url('hero.jpg') center/cover no-repeat;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 30% 50%, rgba(255,127,42,0.15) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .hero div {
+        position: relative;
+        z-index: 2;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hero h1 {
+        font-size: 62px;
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: -1.5px;
+        margin: 0;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 20px;
+        margin: 16px 0 0 0;
+        color: #e6e6e6;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        text-shadow: 0 1px 10px rgba(0,0,0,0.5);
+    }
+
+    /* MENU */
+    .menu-section {
+        padding: 80px 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .menu-title {
+        text-align: center;
+        font-size: 48px;
+        font-weight: 800;
+        margin: 0 0 60px 0;
+        color: #ffffff;
+        position: relative;
+        letter-spacing: -1px;
+    }
+
+    .menu-title::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #ff7f2a, #ffb36b);
+        margin: 16px auto 0;
+        border-radius: 2px;
+    }
+
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 32px;
+    }
+
+    .menu-card {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        border-radius: 20px;
+        padding: 0;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        border: 1px solid rgba(255,127,42,0.1);
+    }
+
+    .menu-card:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 20px 48px rgba(255,127,42,0.2);
+        border-color: rgba(255,127,42,0.3);
+    }
+
+    .menu-card img {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        display: block;
+    }
+
+    .menu-card:hover img {
+        transform: scale(1.08);
+    }
+
+    .menu-card > div {
+        padding: 28px;
+    }
+
+    .menu-card h3 {
+        font-size: 22px;
+        margin: 0 0 12px 0;
+        color: #ffffff;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+
+    .menu-card p {
+        font-size: 15px;
+        color: #b0b0b0;
+        margin: 0 0 16px 0;
+        line-height: 1.5;
+    }
+
+    .price {
+        font-size: 24px;
+        font-weight: 800;
+        margin: 0;
+        background: linear-gradient(135deg, #ff7f2a, #ffb36b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.5px;
+    }
+
+    /* ORDER FORM */
+    .order-section {
+        background: linear-gradient(135deg, rgba(255,127,42,0.05) 0%, rgba(0,0,0,0.2) 100%);
+        padding: 80px 20px;
+        margin-top: 40px;
+        border-top: none;
+        position: relative;
+    }
+
+    .order-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #ff7f2a, transparent);
+    }
+
+    .order-title {
+        text-align: center;
+        font-size: 48px;
+        font-weight: 800;
+        margin: 0 0 50px 0;
+        color: #ffffff;
+        letter-spacing: -1px;
+    }
+
+    .order-title::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #ff7f2a, #ffb36b);
+        margin: 16px auto 0;
+        border-radius: 2px;
+    }
+
+    form {
+        max-width: 550px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        padding: 48px;
+        border-radius: 20px;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+        border: 1px solid rgba(255,127,42,0.1);
+    }
+
+    label {
+        font-weight: 600;
+        margin-top: 24px;
+        display: block;
+        color: #f2f2f2;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
+
+    label:first-of-type {
+        margin-top: 0;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 14px 16px;
+        margin-top: 8px;
+        border-radius: 12px;
+        border: 1.5px solid rgba(255,127,42,0.2);
+        background: rgba(15,15,15,0.5);
+        color: #fff;
+        font-size: 15px;
+        font-family: inherit;
+        transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus {
+        outline: none;
+        border-color: #ff7f2a;
+        background: rgba(15,15,15,0.8);
+        box-shadow: 0 0 0 3px rgba(255,127,42,0.15);
+    }
+
+    input::placeholder {
+        color: #888;
+    }
+
+    button {
+        width: 100%;
+        padding: 16px;
+        margin-top: 32px;
+        background: linear-gradient(135deg, #ff7f2a, #ff9844);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        box-shadow: 0 8px 24px rgba(255,127,42,0.3);
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(255,127,42,0.4);
+    }
+
+    button:active {
+        transform: translateY(0);
+    }
+
+    /* FOOTER */
+    footer {
+        text-align: center;
+        padding: 40px 20px;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+        color: #888;
+        margin-top: 60px;
+        font-size: 14px;
+        border-top: 1px solid rgba(255,127,42,0.1);
+        letter-spacing: 0.5px;
+    }
+
+    footer a {
+        color: #ff7f2a;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+        color: #ffb36b;
+    }
+
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 42px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        .menu-title, .order-title {
+            font-size: 36px;
+        }
+
+        .menu-grid {
+            gap: 24px;
+        }
+
+        form {
+            padding: 32px 24px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <div>
+        <h1>Premium Idiyappam & Veg Stew</h1>
+        <p>Authentic South Indian flavors crafted fresh every day</p>
+    </div>
+</div>
+
+<!-- MENU -->
+<section class="menu-section">
+    <h2 class="menu-title">Our Signature Dishes</h2>
+
+    <div class="menu-grid">
+        <div class="menu-card">
+            <img src="idiyappam.jpg" alt="Idiyappam">
+            <div>
+                <h3>Fresh Soft Idiyappam</h3>
+                <p>Traditional string hoppers made fresh with love</p>
+                <div class="price">$25 (Half Tray)</div>
+            </div>
+        </div>
+
+        <div class="menu-card">
+            <img src="vegstew.jpg" alt="Veg Stew">
+            <div>
+                <h3>Creamy Veg Stew</h3>
+                <p>Rich coconut‑based stew with fresh vegetables</p>
+                <div class="price">$40 (Half Tray)</div>
+            </div>
+        </div>
+
+        <div class="menu-card">
+            <img src="fulltray.jpg" alt="Full Tray Idiyappam">
+            <div>
+                <h3>Full Tray Idiyappam</h3>
+                <p>Perfect for gatherings and celebrations</p>
+                <div class="price">$80 (Full Tray)</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ORDER FORM -->
+<section class="order-section">
+    <h2 class="order-title">Place Your Order</h2>
+
+    <form id="orderForm">
+        <label>Name</label>
+        <input type="text" id="name" required>
+
+        <label>Phone Number</label>
+        <input type="text" id="phone" required>
+
+        <label>Food Item</label>
+        <select id="food">
+            <option value="Idiyappam">Idiyappam</option>
+            <option value="Veg Stew">Veg Stew</option>
+        </select>
+
+        <label>Tray Size</label>
+        <select id="tray">
+            <option value="Half Tray">Half Tray</option>
+            <option value="Full Tray">Full Tray</option>
+        </select>
+
+        <label>Quantity</label>
+        <input type="number" id="qty" min="1" value="1">
+
+        <label>Total Amount</label>
+        <input type="text" id="total" readonly>
+
+        <button type="submit">Submit Order</button>
+    </form>
+</section>
+
+<footer>
+    © Ummah’s Kitchen — Call/Text: 469‑596‑2180 — Closed Sundays
+</footer>
+
+<script>
+    const prices = {
+        "Idiyappam-Half Tray": 25,
+        "Idiyappam-Full Tray": 80,
+        "Veg Stew-Half Tray": 40
+    };
+
+    function calculateTotal() {
+        const food = document.getElementById("food").value;
+        const tray = document.getElementById("tray").value;
+        const qty = parseInt(document.getElementById("qty").value) || 1;
+        const key = `${food}-${tray}`;
+        const price = prices[key] || 0;
+        document.getElementById("total").value = "$" + (price * qty);
+    }
+
+    document.getElementById("food").onchange = calculateTotal;
+    document.getElementById("tray").onchange = calculateTotal;
+    document.getElementById("qty").oninput = calculateTotal;
+
+    document.getElementById("orderForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        calculateTotal();
+
+        const name = document.getElementById("name").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const food = document.getElementById("food").value;
+        const tray = document.getElementById("tray").value;
+        const qty = parseInt(document.getElementById("qty").value) || 1;
+        const totalRaw = document.getElementById("total").value.replace(/[^0-9.\-]+/g, "");
+        const total = parseFloat(totalRaw) || 0;
+
+        const payload = {
+            name,
+            phone,
+            food,
+            tray,
+            qty,
+            total,
+            date: new Date().toISOString()
+        };
+
+        try {
+            const res = await fetch("/.netlify/functions/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+            const text = await res.text();
+            alert("Order submitted: " + text);
+            document.getElementById("orderForm").reset();
+            calculateTotal();
+        } catch (err) {
+            console.error(err);
+            alert("Submission failed: " + (err.message || err));
+        }
+    });
+</script>
+
+</body>
+</html>
