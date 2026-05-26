@@ -401,12 +401,18 @@
         <label>Total Amount</label>
         <input type="text" id="total" readonly>
 
+        <label>Pickup Date</label>
+        <input type="date" id="pickupDate" required>
+
+        <label>Pickup Time</label>
+        <input type="time" id="pickupTime" required>
+
         <button type="submit">Submit Order</button>
     </form>
 </section>
 
 <footer>
-    © Ummah's Kitchen — Call/Text: 309 532 9277 — Closed Sundays
+    © Ummah's Kitchen — Call/Text: 469 596 2180 — Closed Sundays
 </footer>
 
 <script>
@@ -425,6 +431,18 @@
         document.getElementById("total").value = "$" + (price * qty);
     }
 
+    function initializePickupDate() {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const yyyy = tomorrow.getFullYear();
+        const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        const dd = String(tomorrow.getDate()).padStart(2, '0');
+        document.getElementById("pickupDate").value = `${yyyy}-${mm}-${dd}`;
+        document.getElementById("pickupDate").min = `${yyyy}-${mm}-${dd}`;
+    }
+
+    initializePickupDate();
+
     document.getElementById("food").onchange = calculateTotal;
     document.getElementById("tray").onchange = calculateTotal;
     document.getElementById("qty").oninput = calculateTotal;
@@ -440,6 +458,8 @@
         const qty = parseInt(document.getElementById("qty").value) || 1;
         const totalRaw = document.getElementById("total").value.replace(/[^0-9.\-]+/g, "");
         const total = parseFloat(totalRaw) || 0;
+        const pickupDate = document.getElementById("pickupDate").value;
+        const pickupTime = document.getElementById("pickupTime").value;
 
         const payload = {
             name,
@@ -448,6 +468,8 @@
             tray,
             qty,
             total,
+            pickupDate,
+            pickupTime,
             date: new Date().toISOString()
         };
 
