@@ -1,0 +1,3 @@
+[build]
+  publish = "scaffolding-form"
+  functions = "scaffolding-form/netlify/functions"
