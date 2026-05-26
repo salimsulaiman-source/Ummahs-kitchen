@@ -4,7 +4,7 @@ function doPost(e) {
     if (!content) throw new Error('No POST body found');
 
     const data = JSON.parse(content);
-    const spreadsheetId = 'YOUR_SPREADSHEET_ID';
+    const spreadsheetId = '1OK5nk75VUkYZldeATgUJGHJxjpoZxwR8xHBdhtJMGNo';
     const sheetName = 'Sheet1';
     const ss = SpreadsheetApp.openById(spreadsheetId);
     const sheet = ss.getSheetByName(sheetName) || ss.getSheets()[0];
